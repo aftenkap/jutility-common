@@ -7,7 +7,7 @@ package org.jutility.common.reflection;
  * #%L
  * jutility-common
  * %%
- * Copyright (C) 2013 - 2014 jutility.org
+ * Copyright (C) 2013 - 2015 jutility.org
  * %%
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -56,7 +56,7 @@ import org.slf4j.LoggerFactory;
  * reflection-related tasks.
  *
  * @author Peter J. Radics
- * @version 0.1.2
+ * @version 0.1.4
  * @since 0.1.0
  */
 public class ReflectionUtils {
