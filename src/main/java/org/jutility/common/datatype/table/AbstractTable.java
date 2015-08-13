@@ -240,14 +240,35 @@ public abstract class AbstractTable<CELL extends ICell<T>, T>
     @Override
     public CellContainer<CELL, T> removeRow(final int index) {
 
-        return this.rows.remove(index);
+        CellContainer<CELL, T> row = this.rows.remove(index);
+
+        Iterator<CELL> cellIterator = row.cellIterator();
+        while (cellIterator.hasNext()) {
+
+            CELL cell = cellIterator.next();
+
+            this.remove(this.getColumn(cell.getColumn()), cell);
+        }
+
+        return row;
     }
 
 
     @Override
     public CellContainer<CELL, T> removeColumn(final int index) {
 
-        return this.columns.remove(index);
+        CellContainer<CELL, T> column = this.columns.remove(index);
+
+
+        Iterator<CELL> cellIterator = column.cellIterator();
+        while (cellIterator.hasNext()) {
+
+            CELL cell = cellIterator.next();
+
+            this.remove(this.getRow(cell.getRow()), cell);
+        }
+
+        return column;
     }
 
 
@@ -342,6 +363,11 @@ public abstract class AbstractTable<CELL extends ICell<T>, T>
     }
 
 
+    @Override
+    public boolean remove(CellLocation location) {
+
+        return this.remove(location.getRow(), location.getColumn());
+    }
 
     @Override
     public boolean remove(final CELL cell) {
@@ -377,6 +403,13 @@ public abstract class AbstractTable<CELL extends ICell<T>, T>
         }
 
         return removed;
+    }
+
+    @Override
+    public void clear() {
+
+        this.rows.clear();
+        this.columns.clear();
     }
 
     @Override

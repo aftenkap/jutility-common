@@ -65,6 +65,13 @@ public class Table<T>
         return this.add(new Cell<T>(row, column, value));
     }
 
+    @Override
+    public boolean add(CellLocation location, T value) {
+
+        return this.add(new Cell<T>(location.getRow(), location.getColumn(),
+                value));
+    }
+
 
 
     /**

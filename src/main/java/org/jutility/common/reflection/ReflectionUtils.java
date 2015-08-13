@@ -327,6 +327,7 @@ public class ReflectionUtils {
                     for (final Class<?> parameterType : parameterTypes) {
 
                         if (parameterType != constructorParameterTypes[i]) {
+
                             if (constructorParameterTypes[i].isPrimitive()) {
 
                                 if (!ReflectionUtils
@@ -338,6 +339,11 @@ public class ReflectionUtils {
                                     parametersMatch = false;
                                     break;
                                 }
+                            }
+                            else {
+                                
+                                parametersMatch = false;
+                                break;
                             }
                         }
 
